@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+
+<title>Download VTT files</title>
+
+</head>
+
+<body>
+
+<div id="data"></div>
+
+<script type="text/javascript">
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://gdata.youtube.com/feeds/api/videos/3pxf3Ju2row?alt=json");
+
+// http://img.youtube.com/vi/3pxf3Ju2row/hqdefault.jpg
+
+var data = document.querySelector("#data");
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    var obj = JSON.parse(xhr.responseText);
+    data.innerHTML += obj.entry.content.$t;
+    data.innerHTML += "<br />";
+    data.innerHTML += obj.entry.title.$t;
+  }
+}
+
+xhr.send();
+
+</script>
+
+
+
+</body>
+
+</html>
