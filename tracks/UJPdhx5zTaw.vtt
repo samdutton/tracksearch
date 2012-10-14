@@ -46,6 +46,7 @@ code slides later.
 
 11
 00:00:20.025 --> 00:00:23.720
+
 12
 00:00:23.720 --> 00:00:26.300
 I'd like to talk to you today
@@ -179,6 +180,7 @@ United States.
 
 39
 00:01:40.250 --> 00:01:42.880
+
 40
 00:01:42.880 --> 00:01:44.770
 You might ask the question, who
@@ -244,6 +246,7 @@ application run faster.
 
 54
 00:02:09.460 --> 00:02:11.760
+
 55
 00:02:11.760 --> 00:02:14.270
 It's about enabling things that
@@ -565,6 +568,7 @@ I had a performance problem.
 
 124
 00:04:55.895 --> 00:04:58.740
+
 125
 00:04:58.740 --> 00:05:02.100
 And the checklist that I just
@@ -742,6 +746,7 @@ So it does the same thing.
 
 162
 00:06:36.660 --> 00:06:39.520
+
 163
 00:06:39.520 --> 00:06:42.280
 And then what I did is I
@@ -829,6 +834,7 @@ That's not so bad, right?
 
 181
 00:07:29.540 --> 00:07:31.760
+
 182
 00:07:31.760 --> 00:07:34.800
 Of course it is, yeah.
@@ -1123,6 +1129,7 @@ make it better.
 
 245
 00:10:29.050 --> 00:10:31.770
+
 246
 00:10:31.770 --> 00:10:32.020
 All right.
@@ -1630,6 +1637,7 @@ the same optimized code.
 
 353
 00:15:27.840 --> 00:15:31.370
+
 354
 00:15:31.370 --> 00:15:36.290
 Next thing I'd like to talk
@@ -1813,6 +1821,7 @@ cause allocation.
 
 392
 00:17:22.040 --> 00:17:25.250
+
 393
 00:17:25.250 --> 00:17:26.940
 The next thing I'd like to
@@ -1871,6 +1880,7 @@ array is very compact.
 
 405
 00:17:51.600 --> 00:17:54.150
+
 406
 00:17:54.150 --> 00:17:56.830
 If that's not the case-- so you
@@ -1910,6 +1920,7 @@ at run time to access.
 
 414
 00:18:12.660 --> 00:18:15.670
+
 415
 00:18:15.670 --> 00:18:19.600
 Kind of obvious here, if you
@@ -2132,6 +2143,7 @@ about twice as fast.
 
 463
 00:20:15.270 --> 00:20:18.100
+
 464
 00:20:18.100 --> 00:20:20.200
 So what about arrays
@@ -2595,6 +2607,7 @@ store the true value in.
 
 561
 00:24:43.560 --> 00:24:46.060
+
 562
 00:24:46.060 --> 00:24:47.440
 That's a lot of work.
@@ -2658,6 +2671,7 @@ initialization of the array.
 
 575
 00:25:23.280 --> 00:25:25.670
+
 576
 00:25:25.670 --> 00:25:27.960
 So touched on this already.
@@ -2831,6 +2845,7 @@ the language.
 
 612
 00:27:06.750 --> 00:27:08.380
+
 613
 00:27:08.380 --> 00:27:12.280
 The goal of the full compiler
@@ -3212,6 +3227,7 @@ types that are input.
 
 692
 00:30:47.820 --> 00:30:51.690
+
 693
 00:30:51.690 --> 00:30:53.470
 This makes a big difference
@@ -3277,6 +3293,7 @@ speed improvement.
 
 706
 00:31:26.295 --> 00:31:29.480
+
 707
 00:31:29.480 --> 00:31:31.700
 Now I'd like to introduce a
@@ -3450,6 +3467,7 @@ wherever you can.
 
 744
 00:33:05.790 --> 00:33:09.240
+
 745
 00:33:09.240 --> 00:33:12.030
 I'd like to talk about the
@@ -3477,6 +3495,7 @@ the hot functions.
 
 750
 00:33:22.885 --> 00:33:26.720
+
 751
 00:33:26.720 --> 00:33:27.570
 Why does it do this?
@@ -3540,6 +3559,7 @@ that we've added recently.
 
 764
 00:34:06.050 --> 00:34:09.620
+
 765
 00:34:09.620 --> 00:34:13.670
 By enabling inlining, by
@@ -3604,6 +3624,7 @@ it's straight line code.
 
 778
 00:34:44.449 --> 00:34:48.850
+
 779
 00:34:48.850 --> 00:34:52.566
 So let's compare the performance
@@ -3630,6 +3651,7 @@ the original code.
 
 784
 00:35:02.600 --> 00:35:04.850
+
 785
 00:35:04.850 --> 00:35:07.730
 One thing that's really useful
@@ -3664,6 +3686,7 @@ functions get optimized.
 
 792
 00:35:20.300 --> 00:35:23.460
+
 793
 00:35:23.460 --> 00:35:25.920
 However, there are certain
@@ -3767,6 +3790,7 @@ the try catch block.
 
 814
 00:36:20.722 --> 00:36:23.320
+
 815
 00:36:23.320 --> 00:36:26.830
 If you want to find out which
@@ -3793,6 +3817,7 @@ be compiled and why.
 
 820
 00:36:39.200 --> 00:36:41.500
+
 821
 00:36:41.500 --> 00:36:45.110
 The last thing I'd like to talk
@@ -3922,6 +3947,7 @@ way for a while, slower.
 
 848
 00:37:50.055 --> 00:37:52.620
+
 849
 00:37:52.620 --> 00:37:54.270
 There's a similar process
@@ -4087,6 +4113,7 @@ deoptimized on and why.
 
 883
 00:39:21.560 --> 00:39:24.110
+
 884
 00:39:24.110 --> 00:39:28.400
 Now most of you are doing web

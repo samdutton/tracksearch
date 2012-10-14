@@ -136,6 +136,7 @@ you'd expect it to.
 
 30
 00:01:26.080 --> 00:01:29.230
+
 31
 00:01:29.230 --> 00:01:33.280
 With an enhanced UI that allows
@@ -276,6 +277,7 @@ that we've now got.
 
 60
 00:02:47.730 --> 00:02:50.320
+
 61
 00:02:50.320 --> 00:02:54.580
 And my battery is dead, so I
@@ -485,6 +487,7 @@ anything else.
 
 105
 00:05:01.320 --> 00:05:05.130
+
 106
 00:05:05.130 --> 00:05:08.810
 So we're going to walk
@@ -1137,6 +1140,7 @@ and it asks for feeds.
 
 242
 00:11:33.565 --> 00:11:37.700
+
 243
 00:11:37.700 --> 00:11:40.520
 So the first thing we need to
@@ -1392,6 +1396,7 @@ we need to do.
 
 297
 00:14:24.785 --> 00:14:29.150
+
 298
 00:14:29.150 --> 00:14:41.010
 Run permissions, and appWindow,
@@ -1427,6 +1432,7 @@ is in our background page.
 
 305
 00:14:59.550 --> 00:15:02.730
+
 306
 00:15:02.730 --> 00:15:05.870
 So in our background page we're
@@ -1521,6 +1527,7 @@ background.js.
 
 325
 00:16:16.940 --> 00:16:19.210
+
 326
 00:16:19.210 --> 00:16:23.540
 So we've got our background
@@ -1533,6 +1540,7 @@ going to be good to go.
 
 328
 00:16:26.675 --> 00:16:30.040
+
 329
 00:16:30.040 --> 00:16:32.710
 There's a couple other events
@@ -1663,6 +1671,7 @@ Tools, and Extensions.
 
 356
 00:17:41.990 --> 00:17:44.640
+
 357
 00:17:44.640 --> 00:17:47.100
 So I've already checked the
@@ -1695,12 +1704,14 @@ doing this early.
 
 363
 00:18:07.140 --> 00:18:14.445
+
 364
 00:18:14.445 --> 00:18:15.810
 Try that again.
 
 365
 00:18:15.810 --> 00:18:18.980
+
 366
 00:18:18.980 --> 00:18:22.820
 All right, so now if I
@@ -1785,6 +1796,7 @@ can deal with sad panda.
 
 383
 00:19:13.219 --> 00:19:18.010
+
 384
 00:19:18.010 --> 00:19:21.470
 All right, so let's see that in
@@ -2089,6 +2101,7 @@ including JavaScript URLs.
 
 448
 00:22:14.800 --> 00:22:17.710
+
 449
 00:22:17.710 --> 00:22:20.550
 That one kind of sucks, right?
@@ -2214,6 +2227,7 @@ where eval is good.
 
 475
 00:23:32.920 --> 00:23:36.930
+
 476
 00:23:36.930 --> 00:23:40.910
 Safe, good, protecting your
@@ -2436,6 +2450,7 @@ I can actually just go ng-csp.
 
 523
 00:26:03.790 --> 00:26:07.490
+
 524
 00:26:07.490 --> 00:26:11.910
 And that now, if I did
@@ -2466,6 +2481,7 @@ Oh, yeah, reloading helps.
 
 530
 00:26:34.270 --> 00:26:36.990
+
 531
 00:26:36.990 --> 00:26:43.700
 So over here, go reload my
@@ -2487,6 +2503,7 @@ do in my next step here.
 
 535
 00:26:49.960 --> 00:26:57.680
+
 536
 00:26:57.680 --> 00:27:01.100
 So one of the other things that
@@ -2600,6 +2617,7 @@ displayed to the user.
 
 559
 00:28:15.740 --> 00:28:18.940
+
 560
 00:28:18.940 --> 00:28:24.340
 So I was talking a little bit
@@ -2726,6 +2744,7 @@ the app starts.
 
 586
 00:29:35.485 --> 00:29:38.780
+
 587
 00:29:38.780 --> 00:29:42.800
 Now, it'd be really kick butt if
@@ -3027,6 +3046,7 @@ to go, all hunky dory.
 
 650
 00:32:47.260 --> 00:32:50.220
+
 651
 00:32:50.220 --> 00:32:57.290
 To get that stuff out of the
@@ -3182,6 +3202,7 @@ content store.
 
 683
 00:34:57.699 --> 00:35:02.080
+
 684
 00:35:02.080 --> 00:35:08.000
 As we're working on this, we
@@ -3285,6 +3306,7 @@ just sort of scroll down here.
 
 705
 00:36:18.320 --> 00:36:25.430
+
 706
 00:36:25.430 --> 00:36:30.490
 So we go and get our feeds from
@@ -3312,6 +3334,7 @@ user's display.
 
 711
 00:36:42.155 --> 00:36:45.480
+
 712
 00:36:45.480 --> 00:36:47.910
 So let's go and add this guy.
@@ -3328,6 +3351,7 @@ we've refactored.
 
 715
 00:36:52.540 --> 00:37:01.010
+
 716
 00:37:01.010 --> 00:37:05.990
 And sure enough, now we
@@ -3391,6 +3415,7 @@ working today?
 
 729
 00:37:34.890 --> 00:37:40.130
+
 730
 00:37:40.130 --> 00:37:42.050
 All right, so close
@@ -3398,6 +3423,7 @@ this window.
 
 731
 00:37:42.050 --> 00:37:48.180
+
 732
 00:37:48.180 --> 00:37:54.880
 And so it's fair enough,
@@ -3414,6 +3440,7 @@ turn Wi-Fi off again.
 
 735
 00:37:59.590 --> 00:38:02.660
+
 736
 00:38:02.660 --> 00:38:05.210
 So now because I've turned the
@@ -3481,6 +3508,7 @@ places.
 
 749
 00:38:51.765 --> 00:39:02.260
+
 750
 00:39:02.260 --> 00:39:05.730
 Keeping the application up to
@@ -3743,6 +3771,7 @@ pop this into our application.
 
 805
 00:41:40.270 --> 00:41:42.910
+
 806
 00:41:42.910 --> 00:41:45.550
 And I'm going to
@@ -3763,6 +3792,7 @@ actually see where we are.
 
 810
 00:41:50.890 --> 00:41:54.900
+
 811
 00:41:54.900 --> 00:41:57.280
 I've put in a place where I want
@@ -3793,6 +3823,7 @@ need to go add that.
 
 817
 00:42:13.750 --> 00:42:16.490
+
 818
 00:42:16.490 --> 00:42:19.930
 Pop that in, now the app will
@@ -3839,6 +3870,7 @@ to fire much more quickly.
 
 827
 00:42:47.260 --> 00:42:57.070
+
 828
 00:42:57.070 --> 00:43:00.540
 So there's a bunch of other new
@@ -3856,6 +3888,7 @@ into the app all that well.
 
 831
 00:43:07.935 --> 00:43:15.070
+
 832
 00:43:15.070 --> 00:43:17.520
 Because of the way the app was
@@ -3886,6 +3919,7 @@ worth talking about.
 
 838
 00:43:27.000 --> 00:43:30.930
+
 839
 00:43:30.930 --> 00:43:34.490
 There's a new Identity API
@@ -4031,6 +4065,7 @@ of permissions.
 
 869
 00:45:10.470 --> 00:45:15.100
+
 870
 00:45:15.100 --> 00:45:18.030
 And then there's also when
@@ -4276,6 +4311,7 @@ applications.
 
 922
 00:47:40.195 --> 00:47:43.170
+
 923
 00:47:43.170 --> 00:47:44.440
 One of the ones that
@@ -4404,6 +4440,7 @@ I'm trying select something.
 
 950
 00:48:52.090 --> 00:48:54.450
+
 951
 00:48:54.450 --> 00:48:56.380
 Think about most applications
@@ -4552,6 +4589,7 @@ I do that.
 
 982
 00:50:28.790 --> 00:50:32.790
+
 983
 00:50:32.790 --> 00:50:34.350
 Applications should be fast.
@@ -4766,6 +4804,7 @@ So what's next?
 
 1028
 00:52:45.280 --> 00:52:47.780
+
 1029
 00:52:47.780 --> 00:52:50.510
 You could start using this and
@@ -5069,6 +5108,7 @@ to any of your questions.
 
 1092
 00:56:04.990 --> 00:56:11.916
+
 1093
 00:56:11.916 --> 00:56:15.965
 AUDIENCE: So how would I put
@@ -5150,6 +5190,7 @@ haven't tried it myself.
 
 1110
 00:56:52.480 --> 00:56:54.670
+
 1111
 00:56:54.670 --> 00:56:56.690
 It uses cookies, so
@@ -5161,6 +5202,7 @@ There you go.
 
 1113
 00:56:57.940 --> 00:57:00.174
+
 1114
 00:57:00.174 --> 00:57:02.590
 AUDIENCE: Is this stuff going
@@ -5192,6 +5234,7 @@ not there today.
 
 1120
 00:57:14.165 --> 00:57:17.430
+
 1121
 00:57:17.430 --> 00:57:21.940
 I want it just as soon as you
@@ -5204,6 +5247,7 @@ everywhere, I'm a happy guy.
 
 1123
 00:57:24.640 --> 00:57:29.490
+
 1124
 00:57:29.490 --> 00:57:32.890
 AUDIENCE: When can I write
@@ -5283,6 +5327,7 @@ they [INAUDIBLE].
 
 1140
 00:58:16.868 --> 00:58:24.570
+
 1141
 00:58:24.570 --> 00:58:28.980
 PETE LEPAGE: So right now
@@ -5336,6 +5381,7 @@ coming soon those other two.
 
 1152
 00:58:54.380 --> 00:58:57.302
+
 1153
 00:58:57.302 --> 00:58:58.180
 PETE LEPAGE: Cool.
@@ -5346,6 +5392,7 @@ Any other questions?
 
 1155
 00:58:59.430 --> 00:59:02.490
+
 1156
 00:59:02.490 --> 00:59:04.860
 All right, well that's

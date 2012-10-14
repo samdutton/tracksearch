@@ -709,6 +709,7 @@ this.name equals name for you.
 
 151
 00:06:35.820 --> 00:06:40.060
+
 152
 00:06:40.060 --> 00:06:46.290
 In Java, if you have a block of
@@ -750,6 +751,7 @@ the right of it.
 
 160
 00:07:06.050 --> 00:07:09.410
+
 161
 00:07:09.410 --> 00:07:11.030
 So Dart doesn't have packages.
@@ -780,6 +782,7 @@ that library.
 
 167
 00:07:22.370 --> 00:07:25.560
+
 168
 00:07:25.560 --> 00:07:29.420
 Now I said that Dart doesn't
@@ -887,6 +890,7 @@ assignments.
 
 191
 00:08:24.500 --> 00:08:27.730
+
 192
 00:08:27.730 --> 00:08:29.230
 Dart also has static fields.
@@ -907,6 +911,7 @@ that everyone sees.
 
 196
 00:08:36.630 --> 00:08:39.640
+
 197
 00:08:39.640 --> 00:08:43.210
 And you can initialize them to
@@ -1094,6 +1099,7 @@ and then the value.
 
 236
 00:10:27.430 --> 00:10:29.680
+
 237
 00:10:29.680 --> 00:10:33.390
 Likewise, for the overloaded
@@ -1140,6 +1146,7 @@ parameter.
 
 246
 00:10:53.340 --> 00:10:56.870
+
 247
 00:10:56.870 --> 00:10:59.470
 And you could specify default
@@ -1228,6 +1235,7 @@ saying chargeTax: false.
 
 265
 00:11:41.030 --> 00:11:45.420
+
 266
 00:11:45.420 --> 00:11:47.490
 Here's an interesting thing.
@@ -1358,6 +1366,7 @@ object itself.
 
 293
 00:12:52.460 --> 00:12:55.530
+
 294
 00:12:55.530 --> 00:12:57.760
 And Dart also has operator
@@ -1384,6 +1393,7 @@ money.add(money).
 
 299
 00:13:07.510 --> 00:13:11.950
+
 300
 00:13:11.950 --> 00:13:15.350
 And finally, Dart has
@@ -1716,6 +1726,7 @@ off for that string.
 
 370
 00:16:24.050 --> 00:16:26.610
+
 371
 00:16:26.610 --> 00:16:29.110
 I don't want to say a
@@ -1879,6 +1890,7 @@ about what's being left out.
 
 405
 00:17:53.310 --> 00:17:56.810
+
 406
 00:17:56.810 --> 00:17:58.920
 The other-- and I want to say
@@ -1966,6 +1978,7 @@ there too if you want.
 
 424
 00:18:45.280 --> 00:18:50.020
+
 425
 00:18:50.020 --> 00:18:51.990
 And you can make things a
@@ -2034,6 +2047,7 @@ Now this says Transformer bay.
 
 439
 00:19:26.630 --> 00:19:29.370
+
 440
 00:19:29.370 --> 00:19:31.820
 Maybe some of you get the
@@ -2051,6 +2065,7 @@ Transformer prime
 
 443
 00:19:35.000 --> 00:19:38.140
+
 444
 00:19:38.140 --> 00:19:40.750
 And so it looks a little
@@ -2197,6 +2212,7 @@ in list) {doSomething}.
 
 474
 00:20:53.180 --> 00:20:55.350
+
 475
 00:20:55.350 --> 00:20:59.900
 Or you can use an internal
@@ -2324,6 +2340,7 @@ Let's go back.
 
 502
 00:22:03.840 --> 00:22:12.090
+
 503
 00:22:12.090 --> 00:22:13.580
 I have a lot of slides.
@@ -2410,6 +2427,7 @@ instance and invoke go.
 
 521
 00:22:49.558 --> 00:22:52.630
+
 522
 00:22:52.630 --> 00:22:56.360
 So this is a really important
@@ -2671,12 +2689,14 @@ You look at it again--
 
 577
 00:25:08.375 --> 00:25:11.530
+
 578
 00:25:11.530 --> 00:25:12.780
 it looks a lot more readable.
 
 579
 00:25:12.780 --> 00:25:16.570
+
 580
 00:25:16.570 --> 00:25:19.970
 So that's basically converting
@@ -2824,6 +2844,7 @@ Let's try to port a widget.
 
 611
 00:26:38.360 --> 00:26:41.252
+
 612
 00:26:41.252 --> 00:26:43.905
 Now widgets are written in many
@@ -3542,6 +3563,7 @@ into your existing GWT apps.
 
 762
 00:33:51.100 --> 00:33:53.800
+
 763
 00:33:53.800 --> 00:33:56.200
 You could migrate page
@@ -4411,6 +4433,7 @@ how it would work.
 
 945
 00:42:06.985 --> 00:42:10.270
+
 946
 00:42:10.270 --> 00:42:12.320
 I'm just going to skip
@@ -4756,6 +4779,7 @@ tomorrow, we're removing that.
 
 1018
 00:45:26.030 --> 00:45:28.610
+
 1019
 00:45:28.610 --> 00:45:33.310
 So in summary I just wanted to
@@ -5208,6 +5232,7 @@ VIJAY MENON: [INAUDIBLE]
 
 1116
 00:49:47.370 --> 00:49:49.440
+
 1117
 00:49:49.440 --> 00:49:50.000
 RAY CROMWELL: I'll
@@ -5224,6 +5249,7 @@ official answer from Lars.
 
 1120
 00:49:54.645 --> 00:49:56.790
+
 1121
 00:49:56.790 --> 00:49:57.760
 RAY CROMWELL: Ah.
@@ -5352,6 +5378,7 @@ it if it wasn't.
 
 1149
 00:50:40.740 --> 00:50:43.480
+
 1150
 00:50:43.480 --> 00:50:43.965
 AUDIENCE: Hi there.
