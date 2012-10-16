@@ -46,6 +46,11 @@ margin: 0 auto 0 auto;
 padding: 15px 30px 20px 30px;
 max-width: 720px;
 }
+
+div#info {
+height: 115px;
+margin: 0 0 20px 0;
+}
  
 h1 {
 border-bottom: 1px solid #aaa;
@@ -71,6 +76,16 @@ img {
 border: none;
 }
  
+input#query {
+color: #e00;
+float: right;
+font-family: Trebuchet MS, sans-serif;
+font-size: 11pt;
+position: relative;
+top: -7px;
+width: 175px;
+}
+
 p {
 color: #eee;
 font-size: 18px;
@@ -89,6 +104,14 @@ padding: 16px 0 0 0;
 p.borderBelow {
 border-bottom: 1px solid #aaa;
 padding: 0 0 20px 0;
+}
+
+span.inputLabel {
+color: #eee;
+float: left;
+font-size: 11pt;
+font-family: Trebuchet MS, sans-serif;
+line-height: 1em;
 }
 
 video {
