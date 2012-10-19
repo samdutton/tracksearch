@@ -79,11 +79,13 @@ function buildTracksAndVideoData() {
 
 // open the cues database
 // then, if necessary, insert cues into the cues table
-var db = openDatabase('cues', '1.0', 'cues', 100 * 1024 * 1024); // short name, version, display name, max size (made-up number...)
+// short name, version, display name, max size (made-up number...)
 // if transaction is successful insert cues into table
+var db = openDatabase('cues', '1.0', 'cues', 100 * 1024 * 1024);
 db.transaction(function (tx) {
     tx.executeSql('DROP TABLE IF EXISTS cues');
-    tx.executeSql('CREATE TABLE IF NOT EXISTS cues (videoId varchar(15), startTime varchar(15), endTime varchar(15), text varchar(255))',
+    tx.executeSql('CREATE TABLE IF NOT EXISTS cues (' +
+    	'videoId varchar(15), startTime varchar(15), endTime varchar(15), text varchar(255))',
 		[], null, queryErrorHandler);
 }, transactionErrorHandler, buildTracksAndVideoData);
 
@@ -122,12 +124,13 @@ function addClickHandler(cueDiv, cue) {
 
 function displayResults(transaction, results) {
 //    elapsedTimer();
+	resultsDiv.empty();
 	if (!query) { // !!!hack: to cope with inputting long query then quickly deleting
 		return;
 	}
 	var currentVideoId, videoDiv, cuesDiv;
 	var i;
-    for (i = 0; i !== results.rows.length; ++i) {
+  for (i = 0; i !== results.rows.length; ++i) {
     var cue = results.rows.item(i);
 		// for each video (i.e. new currentVideoId)
 		// create divs and add the video title,
@@ -136,9 +139,9 @@ function displayResults(transaction, results) {
 			currentVideoId = cue.videoId;
 			videoDiv = $("<div class='video' />");
 			videoDiv.append("<div class='videoTitle'>" + videos[cue.videoId].title + "</div>");
-			resultsDiv.append(videoDiv);
 			cuesDiv = $("<div class='cues' title='Click to play video at this point' />");
 			videoDiv.append(cuesDiv);
+			resultsDiv.append(videoDiv);
 		}
 		// add cue to div.cues
 		var cueDiv = $("<div class='cue'><span class='cueStartTime'>" +
