@@ -23,6 +23,7 @@ xhr.open("GET", "http://gdata.youtube.com/feeds/api/videos/3pxf3Ju2row?alt=json"
 xhr.onreadystatechange = function() {
   if (xhr.readyState === 4 && xhr.status === 200) {
     var obj = JSON.parse(xhr.responseText);
+    console.log(obj);
     var content = obj.entry.content.$t.split("\n\n");
     var video = {};
     video.info = content[0];

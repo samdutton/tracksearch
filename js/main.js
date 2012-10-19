@@ -33,15 +33,20 @@ function getVideoData(videoId){
 	  if (xhr.readyState === 4 && xhr.status === 200) {
 	    var video = {};
 	    var obj = JSON.parse(xhr.responseText);
+	    video.summary = obj.entry.content.$t;
 	    var content = obj.entry.content.$t.split("\n\n");
-	    video.info = content[0];
-	    video.subtitle = content[1];
-	    video.description = content[2];
+	    video.speakers = content[0];// can check length to determine if correct
 	    video.viewCount = obj.entry.yt$statistics.viewCount;
 	    video.rating = obj.entry.gd$rating.average;
 	    video.title = obj.entry.title.$t;
 	    videos[videoId] = video;
-	    console.log(videos[videoId]);
+	    console.log("title: ", videos[videoId].title);
+	    console.log("speakers: ", videos[videoId].speakers);
+	    console.log("obj", obj);
+	    console.log("content[1]", content[1]);
+	    console.log("content[2]", content[2]);
+//	    console.log("summary", videos[videoId].summary);
+			console.log("......");
 	  }
 	}
 	xhr.send();
