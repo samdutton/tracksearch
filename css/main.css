@@ -51,7 +51,7 @@ div#info {
 margin: 0 0 20px 0;
 }
 
-div#resultsContainer {
+div#results {
 	height:	200px;
 	overflow-y: auto;
 }

@@ -3,7 +3,7 @@
 
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>Download VTT files</title>
 
@@ -12,20 +12,26 @@
 <body>
 
 <div id="data"></div>
+// http://img.youtube.com/vi/3pxf3Ju2row/hqdefault.jpg
 
 <script type="text/javascript">
 var xhr = new XMLHttpRequest();
 xhr.open("GET", "http://gdata.youtube.com/feeds/api/videos/3pxf3Ju2row?alt=json");
 
-// http://img.youtube.com/vi/3pxf3Ju2row/hqdefault.jpg
 
-var data = document.querySelector("#data");
+
 xhr.onreadystatechange = function() {
   if (xhr.readyState === 4 && xhr.status === 200) {
     var obj = JSON.parse(xhr.responseText);
-    data.innerHTML += obj.entry.content.$t;
-    data.innerHTML += "<br />";
-    data.innerHTML += obj.entry.title.$t;
+    var content = obj.entry.content.$t.split("\n\n");
+    var video = {};
+    video.info = content[0];
+    video.subtitle = content[1];
+    video.description = content[2];
+    video.viewCount = obj.entry.yt$statistics.viewCount;
+    video.rating = obj.entry.gd$rating.average;
+    video.title = obj.entry.title.$t;
+    console.log(video);
   }
 }
 
