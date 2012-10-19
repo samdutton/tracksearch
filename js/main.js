@@ -1,35 +1,41 @@
-var ids = ["v9TG7OzsZqQ", "j8oFAr1YR-0", "TEwpppxgZhM", "1zvhs5FR0X8", "KOsJIhmeXoc", "X_ek1wSe66o", 
+var videoIds = ["v9TG7OzsZqQ", "j8oFAr1YR-0", "TEwpppxgZhM", "1zvhs5FR0X8", "KOsJIhmeXoc", "X_ek1wSe66o", 
 	"2txPYQOWBtg", "ie4I7B-umbA", "jD_-r6y558o", "x9KOS1VQgqQ", "hAzhayTnhEI", "Prkyd5n0P7k", "YxogQGnMA9Y", 
 	"bsGgfUreyZw", "3pxf3Ju2row", "UC9LwtA_MC8", "Mk-tFn2Ix6g", "O1YjdKh-rPg", "E8C8ouiXHHk", "VOf27ez_Hvg", 
 	"6EJ801el-I8", "GBxv8SaX0gg", "hFsCG7v9Y4c", "0G9OaTzdOa0", "bwOhfoewMYs", "EvACKPBo_R8"];
 var tracksPath = "tracks/";
 var trackSuffix = ".vtt";
 
-function insertCue(tx, id, cue){
-  tx.executeSql('INSERT INTO cues (id, startTime, endTime, text) VALUES (?, ?, ?, ?)',
-    [id, cue.startTime, cue.endTime, cue.text]);
+function insertCue(tx, videoId, cue){
+  tx.executeSql('INSERT INTO cues (videoId, startTime, endTime, text) VALUES (?, ?, ?, ?)',
+    [videoId, cue.startTime, cue.endTime, cue.text]);
 }
 
 // insert cues for a TextTrack
-function insertCues(id, cues) {
-//	console.log(id, cues.length);
+function insertCues(videoId, cues) {
+//	console.log(videoId, cues.length);
   db.transaction(function(tx){
 	  for (var i = 0; i != cues.length; ++i) {
 	  	var cue = cues[i];
 	  	if (typeof cue !== "undefined" && cue.text !== "") {
-				insertCue(tx, id, cues[i]);
+				insertCue(tx, videoId, cues[i]);
 			}
 	  }
   }, transactionErrorHandler, null);
 }
 
+// temporary hack
+var videos = {};
 function getCues() {
-	for (var i = 0; i != ids.length; ++i) {
-		var id = ids[i];
+	for (var i = 0; i != videoIds.length; ++i) {
+		var videoId = videoIds[i];
+		// temporary hack
+		videos[videoId] = {};
+		videos[videoId].title = videoId;
+
 		var trackElement = document.createElement("track");
 		trackElement.default = true;
-		trackElement.src = tracksPath + id + trackSuffix;
-		trackElement.id = id; // adding property
+		trackElement.src = tracksPath + videoId + trackSuffix;
+		trackElement.videoId = videoId; // adding property
 
 		var videoElement = document.createElement("video");
 		videoElement.appendChild(trackElement);
@@ -38,7 +44,7 @@ function getCues() {
 
 		trackElement.addEventListener("load", function() {
 			var textTrack = this.track; 
-			insertCues(this.id, textTrack.cues);
+			insertCues(this.videoId, textTrack.cues);
 		});
 	}
 }
@@ -49,7 +55,7 @@ var db = openDatabase('cues', '1.0', 'cues', 100 * 1024 * 1024); // short name, 
 // if transaction is successful insert cues into table
 db.transaction(function (tx) {
     tx.executeSql('DROP TABLE IF EXISTS cues');
-    tx.executeSql('CREATE TABLE IF NOT EXISTS cues (id varchar(15), startTime varchar(15), endTime varchar(15), text varchar(255))',  
+    tx.executeSql('CREATE TABLE IF NOT EXISTS cues (videoId varchar(15), startTime varchar(15), endTime varchar(15), text varchar(255))',  
 		[], null, queryErrorHandler); 
 }, transactionErrorHandler, getCues);
 
@@ -69,60 +75,54 @@ function elapsedTimer() {
         elapsedTimer.isStarted = true;
     }
 }
-/*
-// toggle display of cue or query results
-function addClickHandler(cueDiv, linesDiv, cueIndex, query) {
-	var isUnexpanded = true;
-    var expandedHTML, unexpandedHTML; // to cache 'unexpanded' query results and 'expanded' whole cue
-    cueDiv.click(function() {
-		if (isUnexpanded) { // if only query results are shown, display whole cue
-			cueDiv.attr("title", "Click to display a facsimile of the sonnet");
-			unexpandedHTML = $(this).html();
-			if (expandedHTML) { // if not the first time...
-				$(this).html(expandedHTML);
-			} else {
-				linesDiv.html("");
-				var cue = cues[cueIndex];
-				cue.lines.forEach(function(line, index, lines){
-					var lineDiv = $("<div class='line' />");
-					lineDiv.append("<div class='lineText'>" + 
-						line.replace(new RegExp("(" + query + ")", "gi"), "<em>$1</em>") + "</div>");
-					var lineNumber = index + 1;
-					if (lineNumber % 5 === 0) {
-						lineDiv.append("<div class='lineNumber'>" + lineNumber + "</div>");
-					}
-					linesDiv.append(lineDiv);
-				});		
-			}
-			
-			isUnexpanded = false;
-		} else { // whole cue is shown: display only query result lines
-			var sonnetNumber = parseInt(cueIndex, 10) + 1;
-			window.open("http://internetshakespeare.uvic.ca/Library/facsimile/bookplay/UC_Q1_Son/Son/" +
-				sonnetNumber + "/?zoom=5");
-//			expandedHTML = $(this).html();
-//			$(this).html(unexpandedHTML);
-//			isUnexpanded = true;
-		}
-    });
-}
 
-function addDoubleClickHandler(cueDiv, sonnetNumber){
-    cueDiv.dblclick(function(){
-		window.open("http://internetshakespeare.uvic.ca/Library/facsimile/bookplay/UC_Q1_Son/Son/" + sonnetNumber + "/?zoom=5");
+var youTubePlayer = document.querySelector(".youtube-player");
+// toggle display of cue or query results
+function addClickHandler(cueDiv, cue) {
+  cueDiv.click(function() {
+//		console.log(cue.videoId, cue.startTime);
+//		console.log(youTubePlayer.getVideoUrl());
+//		console.log(youTubePlayer.videoId);
+//		if (youTubePlayer.src()) {youTubePlayer.seekTo(cue.startTime)}
+// else {}
+		youTubePlayer.src = 
+			"http://www.youtube.com/embed/" + cue.videoId +
+			"?start=" + cue.startTime +
+			"&autoplay=1&enablejsapi=1"
 	});
 }
-*/
 
 function displayResults(transaction, results) {
+//    elapsedTimer();
 	if (!query) { // !!!hack: to cope with inputting long query then quickly deleting
 		return;
 	}
-
-	for (var i = 0; i !== results.rows.length; ++i) {
-		var cue = results.rows.item(i);
-		console.log(cue);
-	}
+  var resultsDiv = $("<div class='results' />"); //
+	var currentVideoId, videoDiv, cuesDiv;
+	var i;
+    for (i = 0; i !== results.rows.length; ++i) {
+    var cue = results.rows.item(i);
+		// for each video (i.e. new currentVideoId)
+		// create divs and add the video title, 
+		// then add a click handler to display video
+		if (!currentVideoId || currentVideoId !== cue.videoId) {
+			currentVideoId = cue.videoId;
+			videoDiv = $("<div class='video' />");
+			videoDiv.append("<div class='videoTitle'>" + videos[cue.videoId].title + "</div>");			
+			resultsDiv.append(videoDiv);
+			cuesDiv = $("<div class='cues' title='Click to play video at this point' />");
+			videoDiv.append(cuesDiv);
+		}
+		// add cue to div.cues
+		var cueDiv = $("<div class='cue'><span class='cueStartTime'>" + 
+				toMinSec(cue.startTime) + ": </span><span class='cueText'>" + 
+				cue.text.replace(new RegExp("(" + 
+				query + ")", "gi"), 
+			"<em>$1</em>") + "</span></div>"); // empasise query
+		addClickHandler(cueDiv, cue); 
+		cuesDiv.append(cueDiv);       
+  }
+    $("#resultsContainer").html(resultsDiv);
 }
 
 var query;
@@ -134,7 +134,17 @@ $(document).ready(function() {
         return false;
       }
 	    // could use caching of results for query -- and does not cope with pathological input, such as double quotes
-	    var statement = 'SELECT id, startTime, endTime, text FROM cues WHERE text like "%' + query + '%"'; 
+	    var statement = 'SELECT videoId, startTime, endTime, text FROM cues WHERE text like "%' + query + '%"'; 
 	    doReadQuery(statement, displayResults);
     });
 });
+
+// Convert decimal time to mm:ss, e.g. convert 123.3 to 2:03
+function toMinSec(decimalSeconds){
+	var mins = Math.floor(decimalSeconds/60);
+	var secs = Math.floor(decimalSeconds % 60);
+	if (secs < 10) {
+		secs = "0" + secs
+	};
+	return mins + ":" + secs;
+}

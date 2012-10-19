@@ -2,7 +2,7 @@ a {
 color: #77aaff;
 text-decoration: none;
 }
- 
+
 a:hover {
 color: #88bbff;
 text-decoration: underline;
@@ -11,14 +11,14 @@ text-decoration: underline;
 a#viewSource {
 display: block;
 font-size: 18px;
-margin: 30px 0 0 0; 
+margin: 30px 0 0 0;
 border-top: 1px solid #999;
 padding: 20px 0 0 0;
 }
- 
+
 div#links a {
 display: block;
-line-height: 2em; 
+line-height: 2em;
 }
 
 body {
@@ -29,7 +29,7 @@ padding: 20px;
 
 button {
 margin: 0 10px 0 0;
-/* 
+/*
 padding: 5px;
 min-width: 70px;
 font-size: 1.2em;
@@ -39,19 +39,50 @@ font-size: 1.2em;
 button[disabled] {
 color: white;
 }
- 
+
 div#container {
 background: #000;
 margin: 0 auto 0 auto;
 padding: 15px 30px 20px 30px;
-max-width: 720px;
+width: 640px;
 }
 
 div#info {
-height: 115px;
 margin: 0 0 20px 0;
 }
- 
+
+div#resultsContainer {
+	height:	200px;
+	overflow-y: auto;
+}
+
+div.cue {
+cursor: pointer;
+font-size: 10pt;
+margin: 0 0 1em 0;
+line-height: 1.3em;
+padding: 0 0 0 40px;
+text-indent: -40px;
+}
+
+div.video {
+margin: 0 0 1.3em 0;
+}
+
+div.video div.videoTitle {
+border-bottom: 1px dotted #999;
+color: #999;
+font-size: 12pt;
+font-weight: bold;
+margin: 0 0 1em 0;
+padding: 0 0 0 0;
+}
+
+span.cueText em {
+font-style: normal;
+background: rgba(224, 79, 23, 0.49);
+}
+
 h1 {
 border-bottom: 1px solid #aaa;
 color: white;
@@ -59,31 +90,27 @@ font-family: Arial, sans-serif;
 margin: 0 0 30px 0;
 padding: 0 0 10px 0;
 }
- 
+
 h2 {
 color: #ccc;
 font-family: Arial, sans-serif;
 margin: 30px 0 0 0;
 }
 
-html {
-/* avoid annoying page width change 
-when moving from the home page */
-overflow-y: scroll;
+iframe {
+	background-color: #222;
+	margin: 0 0 20px 0;
 }
- 
+
 img {
 border: none;
 }
- 
+
 input#query {
-color: #e00;
-float: right;
-font-family: Trebuchet MS, sans-serif;
-font-size: 11pt;
-position: relative;
-top: -7px;
-width: 175px;
+font-family: Arial, sans-serif;
+font-size: 14pt;
+padding: 5px;
+width: 628px;
 }
 
 p {
@@ -106,11 +133,19 @@ border-bottom: 1px solid #aaa;
 padding: 0 0 20px 0;
 }
 
+span.cueStartTime {
+color: #aaa;
+}
+
+span.cueText {
+color: white;
+}
+
 span.inputLabel {
 color: #eee;
 float: left;
 font-size: 11pt;
-font-family: Trebuchet MS, sans-serif;
+font-family: Arial, sans-serif;
 line-height: 1em;
 }
 
