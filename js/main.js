@@ -1,17 +1,20 @@
-var videoIds = ["v9TG7OzsZqQ", "j8oFAr1YR-0", "TEwpppxgZhM", "1zvhs5FR0X8", "KOsJIhmeXoc", "X_ek1wSe66o",
-	"2txPYQOWBtg", "ie4I7B-umbA", "jD_-r6y558o", "x9KOS1VQgqQ", "hAzhayTnhEI", "Prkyd5n0P7k", "YxogQGnMA9Y",
-	"bsGgfUreyZw", "3pxf3Ju2row", "UC9LwtA_MC8", "Mk-tFn2Ix6g", "O1YjdKh-rPg", "E8C8ouiXHHk", "VOf27ez_Hvg",
-	"6EJ801el-I8", "GBxv8SaX0gg", "hFsCG7v9Y4c", "0G9OaTzdOa0", "bwOhfoewMYs", "EvACKPBo_R8", "9M9sNheYGIw",
-	"AusOPz8Ww80", "xFrufJFBSoQY", "Naol_TPPPL0", "VIBOCVY0Hvg", "g03bcb70kFQ", "30_AIEhar-I", "4f2Zky_YyyQ",
-	"7os4DImjK5U", "F_sbusEUz5w", "M3uWx-fhjUc", "N8SS-rUEZPg", "PAzY2MQxJDQ", "S6kqTymOi7k", "g3aBfkFbPWk",
+var videoIds = ["v9TG7OzsZqQ", "j8oFAr1YR-0", "TEwpppxgZhM", "1zvhs5FR0X8", "KOsJIhmeXoc",
+	"X_ek1wSe66o", "2txPYQOWBtg", "ie4I7B-umbA", "jD_-r6y558o", "x9KOS1VQgqQ", "hAzhayTnhEI",
+	"Prkyd5n0P7k", "YxogQGnMA9Y", "bsGgfUreyZw", "3pxf3Ju2row", "UC9LwtA_MC8", "Mk-tFn2Ix6g",
+	"O1YjdKh-rPg", "E8C8ouiXHHk", "VOf27ez_Hvg", "6EJ801el-I8", "GBxv8SaX0gg", "hFsCG7v9Y4c",
+	"0G9OaTzdOa0", "bwOhfoewMYs", "EvACKPBo_R8", "9M9sNheYGIw", "AusOPz8Ww80", "FrufJFBSoQY",
+	"Naol_TPPPL0", "VIBOCVY0Hvg", "g03bcb70kFQ", "30_AIEhar-I", "4f2Zky_YyyQ", "7os4DImjK5U",
+	"F_sbusEUz5w", "M3uWx-fhjUc", "N8SS-rUEZPg", "PAzY2MQxJDQ", "S6kqTymOi7k", "g3aBfkFbPWk",
 	"lMrkCoqgoxw", "n8hjjSzgRyw", "rT-BxYLZdeY", "seX7jYI96GE", "yd30Nmb3mPU"];
+
 var tracksPath = "tracks/";
 var trackSuffix = ".vtt";
 var resultsDiv = $("#results");
+var query;
 
 function insertCue(tx, videoId, cue){
-  tx.executeSql('INSERT INTO cues (videoId, startTime, endTime, text) VALUES (?, ?, ?, ?)',
-    [videoId, cue.startTime, cue.endTime, cue.text]);
+  tx.executeSql('INSERT INTO cues (videoId, startTime, text) VALUES (?, ?, ?)',
+    [videoId, cue.startTime, cue.text]);
 }
 
 // insert cues for a TextTrack
@@ -31,29 +34,30 @@ function insertCues(videoId, cues) {
 // http://img.youtube.com/vi/3pxf3Ju2row/hqdefault.jpg
 var videos = {};
 function getVideoData(videoId){
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "http://gdata.youtube.com/feeds/api/videos/" + videoId + "?alt=json");
-	xhr.onreadystatechange = function() {
-	  if (xhr.readyState === 4 && xhr.status === 200) {
-	    var video = {};
-	    var obj = JSON.parse(xhr.responseText);
-	    video.summary = obj.entry.content.$t;
-	    var content = obj.entry.content.$t.split("\n\n");
-	    video.speakers = content[0];// can check length to determine if correct
-	    video.viewCount = obj.entry.yt$statistics.viewCount;
-	    video.rating = obj.entry.gd$rating.average;
-	    video.title = obj.entry.title.$t;
-	    videos[videoId] = video;
-	    console.log("title: ", videos[videoId].title);
-	    console.log("speakers: ", videos[videoId].speakers);
-	    console.log("obj", obj);
-	    console.log("content[1]", content[1]);
-	    console.log("content[2]", content[2]);
-//	    console.log("summary", videos[videoId].summary);
-			console.log("......");
-	  }
-	}
-	xhr.send();
+		videos[videoId]= {title: videoId};
+// 	var xhr = new XMLHttpRequest();
+// 	xhr.open("GET", "http://gdata.youtube.com/feeds/api/videos/" + videoId + "?alt=json");
+// 	xhr.onreadystatechange = function() {
+// 	  if (xhr.readyState === 4 && xhr.status === 200) {
+// 	    var video = {};
+// 	    var obj = JSON.parse(xhr.responseText);
+// 	    video.summary = obj.entry.content.$t;
+// 	    var content = obj.entry.content.$t.split("\n\n");
+// 	    video.speakers = content[0];// can check length to determine if correct
+// 	    video.viewCount = obj.entry.yt$statistics.viewCount;
+// 	    video.rating = obj.entry.gd$rating.average;
+// 	    video.title = obj.entry.title.$t;
+// 	    videos[videoId] = video;
+// 	    console.log("title: ", videos[videoId].title);
+// 	    console.log("speakers: ", videos[videoId].speakers);
+// 	    console.log("obj", obj);
+// 	    console.log("content[1]", content[1]);
+// 	    console.log("content[2]", content[2]);
+// //	    console.log("summary", videos[videoId].summary);
+// 			console.log("......");
+// 	  }
+// 	}
+// 	xhr.send();
 }
 
 function makeTrack(videoId){
@@ -65,6 +69,7 @@ function makeTrack(videoId){
 	var videoElement = document.createElement("video");
 	videoElement.appendChild(trackElement);
 	videoElement.style.display = "none";
+	// must add videoElement to body for track load event to fire :^\
 	document.body.appendChild(videoElement);
 
 	trackElement.addEventListener("load", function() {
@@ -93,21 +98,9 @@ db.transaction(function (tx) {
 		[], null, queryErrorHandler);
 }, transactionErrorHandler, buildTracksAndVideoData);
 
-
 function showCount() {
     var statement = "SELECT COUNT(*) FROM cues";
     doReadQuery(statement, showResults);
-}
-
-
-function elapsedTimer() {
-    if (elapsedTimer.isStarted) {
-        console.log("Elapsed: " + (Date.now() - elapsedTimer.startTime));
-        elapsedTimer.isStarted = false;
-    } else {
-        elapsedTimer.startTime = Date.now();
-        elapsedTimer.isStarted = true;
-    }
 }
 
 var youTubePlayer = document.querySelector(".youtube-player");
@@ -127,7 +120,6 @@ function addClickHandler(cueDiv, cue) {
 }
 
 function displayResults(transaction, results) {
-//    elapsedTimer();
 	resultsDiv.empty();
 	if (!query) { // !!!hack: to cope with inputting long query then quickly deleting
 		return;
@@ -158,19 +150,44 @@ function displayResults(transaction, results) {
   }
 }
 
-var query;
-$(document).ready(function() {
-    $("#query").bind('input', function() {
-      query = $(this).val();
-      if (query.length < 2) {
-				resultsDiv.empty();
-        return false;
-      }
-	    // could use caching of results for query -- and does not cope with pathological input, such as double quotes
-	    var statement = 'SELECT videoId, startTime, endTime, text FROM cues WHERE text like "%' + query + '%"';
-	    doReadQuery(statement, displayResults);
-    });
+// most of this code is to wait a bit while query text is entered
+var currentValue, interval;
+var isListeningForInput  = false;
+var $query = $("#query");
+$query.bind('input', function() {
+	currentValue = $(this).val();
+  if (currentValue.length < 2) {
+		resultsDiv.empty();
+    return false;
+  }
+ 	if (!isListeningForInput){
+ 		isListeningForInput = true;
+		interval = setInterval(function(){
+			console.log();
+			if ($query.val() === currentValue){
+		 		clearInterval(interval);
+		 		isListeningForInput = false;
+				query = $query.val();
+			  // could cache results and sanitise input
+			  var statement = 'SELECT videoId, startTime, text ' +
+			  	'FROM cues WHERE text like "%' + query + '%"';
+			  doReadQuery(statement, displayResults);
+			} else {
+				currentValue = $query.val();
+			}
+		}, 300);
+	}
 });
+
+function elapsedTimer(message) {
+    if (elapsedTimer.isStarted) {
+        console.log(message, (Date.now() - elapsedTimer.startTime));
+        elapsedTimer.startTime = Date.now();
+    } else {
+        elapsedTimer.startTime = Date.now();
+        elapsedTimer.isStarted = true;
+    }
+}
 
 // Convert decimal time to mm:ss, e.g. convert 123.3 to 2:03
 function toMinSec(decimalSeconds){
@@ -181,3 +198,4 @@ function toMinSec(decimalSeconds){
 	};
 	return mins + ":" + secs;
 }
+
