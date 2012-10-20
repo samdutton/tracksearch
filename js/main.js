@@ -1,7 +1,10 @@
 var videoIds = ["v9TG7OzsZqQ", "j8oFAr1YR-0", "TEwpppxgZhM", "1zvhs5FR0X8", "KOsJIhmeXoc", "X_ek1wSe66o",
 	"2txPYQOWBtg", "ie4I7B-umbA", "jD_-r6y558o", "x9KOS1VQgqQ", "hAzhayTnhEI", "Prkyd5n0P7k", "YxogQGnMA9Y",
 	"bsGgfUreyZw", "3pxf3Ju2row", "UC9LwtA_MC8", "Mk-tFn2Ix6g", "O1YjdKh-rPg", "E8C8ouiXHHk", "VOf27ez_Hvg",
-	"6EJ801el-I8", "GBxv8SaX0gg", "hFsCG7v9Y4c", "0G9OaTzdOa0", "bwOhfoewMYs", "EvACKPBo_R8"];
+	"6EJ801el-I8", "GBxv8SaX0gg", "hFsCG7v9Y4c", "0G9OaTzdOa0", "bwOhfoewMYs", "EvACKPBo_R8", "9M9sNheYGIw",
+	"AusOPz8Ww80", "xFrufJFBSoQY", "Naol_TPPPL0", "VIBOCVY0Hvg", "g03bcb70kFQ", "30_AIEhar-I", "4f2Zky_YyyQ",
+	"7os4DImjK5U", "F_sbusEUz5w", "M3uWx-fhjUc", "N8SS-rUEZPg", "PAzY2MQxJDQ", "S6kqTymOi7k", "g3aBfkFbPWk",
+	"lMrkCoqgoxw", "n8hjjSzgRyw", "rT-BxYLZdeY", "seX7jYI96GE", "yd30Nmb3mPU"];
 var tracksPath = "tracks/";
 var trackSuffix = ".vtt";
 var resultsDiv = $("#results");
@@ -24,6 +27,7 @@ function insertCues(videoId, cues) {
   }, transactionErrorHandler, null);
 }
 
+// http://storage.googleapis.com/io2012/headshots/mkwst.jpg
 // http://img.youtube.com/vi/3pxf3Ju2row/hqdefault.jpg
 var videos = {};
 function getVideoData(videoId){
