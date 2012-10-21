@@ -1,11 +1,3 @@
-var videoIds = ["v9TG7OzsZqQ", "j8oFAr1YR-0", "TEwpppxgZhM", "1zvhs5FR0X8", "KOsJIhmeXoc",
-	"X_ek1wSe66o", "2txPYQOWBtg", "ie4I7B-umbA", "jD_-r6y558o", "x9KOS1VQgqQ", "hAzhayTnhEI",
-	"Prkyd5n0P7k", "YxogQGnMA9Y", "bsGgfUreyZw", "3pxf3Ju2row", "UC9LwtA_MC8", "Mk-tFn2Ix6g",
-	"O1YjdKh-rPg", "E8C8ouiXHHk", "VOf27ez_Hvg", "6EJ801el-I8", "GBxv8SaX0gg", "hFsCG7v9Y4c",
-	"0G9OaTzdOa0", "bwOhfoewMYs", "EvACKPBo_R8", "9M9sNheYGIw", "AusOPz8Ww80", "FrufJFBSoQY",
-	"Naol_TPPPL0", "VIBOCVY0Hvg", "g03bcb70kFQ", "30_AIEhar-I", "4f2Zky_YyyQ", "7os4DImjK5U",
-	"F_sbusEUz5w", "M3uWx-fhjUc", "N8SS-rUEZPg", "PAzY2MQxJDQ", "S6kqTymOi7k", "g3aBfkFbPWk",
-	"lMrkCoqgoxw", "n8hjjSzgRyw", "rT-BxYLZdeY", "seX7jYI96GE", "yd30Nmb3mPU"];
 
 var tracksPath = "tracks/";
 var trackSuffix = ".vtt";
@@ -32,32 +24,18 @@ function insertCues(videoId, cues) {
 
 // http://storage.googleapis.com/io2012/headshots/mkwst.jpg
 // http://img.youtube.com/vi/3pxf3Ju2row/hqdefault.jpg
-var videos = {};
-function getVideoData(videoId){
-		videos[videoId]= {title: videoId};
-// 	var xhr = new XMLHttpRequest();
-// 	xhr.open("GET", "http://gdata.youtube.com/feeds/api/videos/" + videoId + "?alt=json");
-// 	xhr.onreadystatechange = function() {
-// 	  if (xhr.readyState === 4 && xhr.status === 200) {
-// 	    var video = {};
-// 	    var obj = JSON.parse(xhr.responseText);
-// 	    video.summary = obj.entry.content.$t;
-// 	    var content = obj.entry.content.$t.split("\n\n");
-// 	    video.speakers = content[0];// can check length to determine if correct
-// 	    video.viewCount = obj.entry.yt$statistics.viewCount;
-// 	    video.rating = obj.entry.gd$rating.average;
-// 	    video.title = obj.entry.title.$t;
-// 	    videos[videoId] = video;
-// 	    console.log("title: ", videos[videoId].title);
-// 	    console.log("speakers: ", videos[videoId].speakers);
-// 	    console.log("obj", obj);
-// 	    console.log("content[1]", content[1]);
-// 	    console.log("content[2]", content[2]);
-// //	    console.log("summary", videos[videoId].summary);
-// 			console.log("......");
-// 	  }
-// 	}
-// 	xhr.send();
+
+function updateVideoData(videoId){
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "http://gdata.youtube.com/feeds/api/videos/" + videoId + "?alt=json");
+	xhr.onreadystatechange = function() {
+	  if (xhr.readyState === 4 && xhr.status === 200) {
+	    var obj = JSON.parse(xhr.responseText);
+	  	videos[videoId].rating = obj.entry.yt$statistics.viewCount;
+	    videos[videoId].viewCount = obj.entry.gd$rating.average;
+  	}
+  }
+	xhr.send();
 }
 
 function makeTrack(videoId){
@@ -79,10 +57,9 @@ function makeTrack(videoId){
 }
 
 function buildTracksAndVideoData() {
-	for (var i = 0; i != videoIds.length; ++i) {
-		var videoId = videoIds[i];
-		getVideoData(videoId);
-		makeTrack(videoId);
+	for (var id in videos) {
+		updateVideoData(id);
+		makeTrack(id);
 	}
 }
 
@@ -107,9 +84,6 @@ var youTubePlayer = document.querySelector(".youtube-player");
 // toggle display of cue or query results
 function addClickHandler(cueDiv, cue) {
   cueDiv.click(function() {
-//		console.log(cue.videoId, cue.startTime);
-//		console.log(youTubePlayer.getVideoUrl());
-//		console.log(youTubePlayer.videoId);
 //		if (youTubePlayer.src()) {youTubePlayer.seekTo(cue.startTime)}
 // else {}
 		youTubePlayer.src =
@@ -133,8 +107,12 @@ function displayResults(transaction, results) {
 		// then add a click handler to display video
 		if (!currentVideoId || currentVideoId !== cue.videoId) {
 			currentVideoId = cue.videoId;
+			var video = videos[currentVideoId];
 			videoDiv = $("<div class='video' />");
-			videoDiv.append("<div class='videoTitle'>" + videos[cue.videoId].title + "</div>");
+			videoDiv.append("<div class='videoTitle'>" + video.title + "</div>");
+			if (video.speakers.length !== 0){
+				videoDiv.append("<div class='speakers'>" + video.speakers.join(", ") + "</div>");
+			}
 			cuesDiv = $("<div class='cues' title='Click to play video at this point' />");
 			videoDiv.append(cuesDiv);
 			resultsDiv.append(videoDiv);
@@ -151,6 +129,7 @@ function displayResults(transaction, results) {
 }
 
 // most of this code is to wait a bit while query text is entered
+// would be better done with setTimeout
 var currentValue, interval;
 var isListeningForInput  = false;
 var $query = $("#query");

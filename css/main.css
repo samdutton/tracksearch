@@ -52,8 +52,9 @@ margin: 0 0 20px 0;
 }
 
 div#results {
-	max-height: 300px;
-	overflow-y: auto;
+max-height: 300px;
+margin: 0 0 1em 0;
+overflow-y: auto;
 }
 
 div.cue {
@@ -65,17 +66,27 @@ padding: 0 0 0 40px;
 text-indent: -40px;
 }
 
+div.cues {
+  margin: 1em 0 0 0;
+  padding: 0 0 0 1em;
+}
+
 div.video {
 margin: 0 0 1.3em 0;
+border-bottom: 1px dotted #999;
+padding: 0 0 0.6em 0;
+}
+
+div.video div.speakers {
+color: #999;
+font-size: 11pt;
+margin: 0 0 -0.1em 0;
 }
 
 div.video div.videoTitle {
-border-bottom: 1px dotted #999;
-color: #999;
+color: #ccc;
 font-size: 12pt;
-font-weight: bold;
-margin: 0 0 1em 0;
-padding: 0 0 0 0;
+margin: 0 0 0.4em 0;
 }
 
 span.cueText em {
@@ -98,8 +109,8 @@ margin: 30px 0 0 0;
 }
 
 iframe {
-	background-color: #222;
-	margin: 0 0 20px 0;
+background-color: #222;
+margin: 0 0 20px 0;
 }
 
 img {
@@ -115,8 +126,8 @@ width: 628px;
 
 p {
 color: #eee;
-font-size: 18px;
-line-height: 1.2em;
+font-size: 14px;
+line-height: 1.4em;
 }
 
 p#data {
