@@ -31,8 +31,8 @@ function updateVideoData(videoId){
 	xhr.onreadystatechange = function() {
 	  if (xhr.readyState === 4 && xhr.status === 200) {
 	    var obj = JSON.parse(xhr.responseText);
-	  	videos[videoId].rating = obj.entry.yt$statistics.viewCount;
-	    videos[videoId].viewCount = obj.entry.gd$rating.average;
+	  	videos[videoId].viewCount = obj.entry.yt$statistics.viewCount;
+	    videos[videoId].rating = obj.entry.gd$rating.average;
   	}
   }
 	xhr.send();
@@ -112,7 +112,10 @@ function displayResults(transaction, results) {
 			currentVideoId = cue.videoId;
 			var video = videos[currentVideoId];
 			videoDiv = $("<div class='video' />");
-			videoDiv.append("<div class='videoTitle' + title='" + video.summary.replace(/'/g, "&#39;") + "'>" + video.title + "</div>");
+			videoDiv.append("<div class='videoTitle' + title='" + video.summary.replace(/'/g, "&#39;") +
+				"\n\nRating: " + video.rating +
+				"\nView count: " + video.viewCount +
+				"'>" + video.title + "</div>");
 			if (video.speakers.length !== 0){
 				videoDiv.append("<div class='speakers'>" + video.speakers.join(", ") + "</div>");
 			}
