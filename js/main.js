@@ -84,12 +84,15 @@ var youTubePlayer = document.querySelector(".youtube-player");
 // toggle display of cue or query results
 function addClickHandler(cueDiv, cue) {
   cueDiv.click(function() {
-//		if (youTubePlayer.src()) {youTubePlayer.seekTo(cue.startTime)}
-// else {}
-		youTubePlayer.src =
-			"http://www.youtube.com/embed/" + cue.videoId +
-			"?start=" + cue.startTime +
-			"&autoplay=1&enablejsapi=1"
+  	// don't reload video if the clicked cue is for current video
+		if (youTubePlayer.src.indexOf(cue.videoId) != -1){
+			callPlayer("youTubePlayer", "seekTo", [cue.startTime]);
+		} else {
+			youTubePlayer.src =
+				"http://www.youtube.com/embed/" + cue.videoId +
+				"?start=" + cue.startTime +
+				"&autoplay=1&enablejsapi=1"
+		}
 	});
 }
 
@@ -109,7 +112,7 @@ function displayResults(transaction, results) {
 			currentVideoId = cue.videoId;
 			var video = videos[currentVideoId];
 			videoDiv = $("<div class='video' />");
-			videoDiv.append("<div class='videoTitle'>" + video.title + "</div>");
+			videoDiv.append("<div class='videoTitle' + title='" + video.summary.replace(/'/g, "&#39;") + "'>" + video.title + "</div>");
 			if (video.speakers.length !== 0){
 				videoDiv.append("<div class='speakers'>" + video.speakers.join(", ") + "</div>");
 			}
