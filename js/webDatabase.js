@@ -7,7 +7,7 @@ function displayError(message){
 function transactionErrorHandler(error) {
     alert("Transaction error: " + error.message + ", code: " + error.code);
 }
- 
+
 function transactionSuccessHandler() {
     console.log("Transaction successful.");
 }
@@ -16,10 +16,10 @@ function queryErrorHandler(transaction, error) {
 	if (error.message === "constraint failed") {
 		alert("Constraint failed.");
 	} else {
-	    displayError("Sorry. Something went wrong: " + error.message + ", code: " + error.code + 
+	    displayError("Sorry. Something went wrong: " + error.message + ", code: " + error.code +
 			".\n Sam Dutton would appreciate if you could email this error to sam.dutton@gmail.com.");
 	}
-	
+
     return false;
 }
 
@@ -39,7 +39,7 @@ function showResults(transaction, results) {
 		}
 		if (message !== "") {
 			console.log(message);
-		}	
+		}
 	} else {
         alert("No results")
     }
@@ -60,15 +60,16 @@ function doQuery(statement, querySuccessHandler, parameters) {
 // but not supported by (e.g.) Safari 4.0.5 on Windows XP
 function doReadQuery(statement, querySuccessHandler, parameters) {
 	var transactionFunction = db.readTransaction ? db.readTransaction : db.transaction;
-	transactionFunction.apply(db, [function(tx){tx.executeSql(statement, parameters, querySuccessHandler, queryErrorHandler)}, 
-		transactionErrorHandler, transactionSuccessHandler]);
+	transactionFunction.apply(db, [function(tx){tx.executeSql(statement,
+		parameters, querySuccessHandler, queryErrorHandler)},
+		transactionErrorHandler, null]); // null instead of transactionSuccessHandler
 }
 
 
 function getData(statement, callback) {
-	doReadQuery(statement, 
+	doReadQuery(statement,
 		function(tx, results) { // query success handler
-			handleResults(tx, results, callback);		
+			handleResults(tx, results, callback);
 	});
 }
 

@@ -133,6 +133,10 @@ border-bottom: 1px solid #aaa;
 padding: 0 0 20px 0;
 }
 
+pre {
+  color: #ddd;
+}
+
 span.cueStartTime {
 color: #aaa;
 }
@@ -147,6 +151,13 @@ float: left;
 font-size: 11pt;
 font-family: Arial, sans-serif;
 line-height: 1em;
+}
+
+summary{
+color: white;
+cursor: pointer;
+font-weight: bold;
+outline: none;
 }
 
 video {
