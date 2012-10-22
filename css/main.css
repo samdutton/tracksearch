@@ -146,7 +146,15 @@ input#query {
 font-family: Arial, sans-serif;
 font-size: 14pt;
 padding: 5px;
-width: 628px;
+width: 360px;
+}
+
+label[for=query]{
+  color: white;
+  display: block;
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 10px 0 0 0;
 }
 
 p {
