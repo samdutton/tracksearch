@@ -1,8 +1,11 @@
+document.body.do
+
 
 var tracksPath = "tracks/";
 var trackSuffix = ".vtt";
 var resultsDiv = $("#results");
 var query;
+var $query = $("#query");
 
 function insertCue(tx, videoId, cue){
   tx.executeSql('INSERT INTO cues (videoId, startTime, text) VALUES (?, ?, ?)',
@@ -23,7 +26,6 @@ function insertCues(videoId, cues) {
 }
 
 // http://storage.googleapis.com/io2012/headshots/mkwst.jpg
-// http://img.youtube.com/vi/3pxf3Ju2row/hqdefault.jpg
 
 function updateVideoData(videoId){
 	var xhr = new XMLHttpRequest();
@@ -98,7 +100,7 @@ function addClickHandler(cueDiv, cue) {
 
 function displayResults(transaction, results) {
 	resultsDiv.empty();
-	if (!query) { // !!!hack: to cope with inputting long query then quickly deleting
+	if ($query.val() === "") { // !!!hack: to cope with inputting long query then quickly deleting
 		return;
 	}
 	var currentVideoId, videoDiv, cuesDiv;
@@ -115,6 +117,8 @@ function displayResults(transaction, results) {
 
 			var detailsDiv = $("<details class='videoDetails' />");
 			detailsDiv.append("<summary class='videoTitle'>" + video.title + "</summary>");
+			detailsDiv.append("<img class='videoThumbnail' src='http://img.youtube.com/vi/" +
+				currentVideoId + "/hqdefault.jpg' title='Default thumbnail image' />");
 			if (!!video.summary){
 				detailsDiv.append("<div class='videoSummary'>" + video.summary + "</div>");
 			}
@@ -147,7 +151,6 @@ function displayResults(transaction, results) {
 // would be better done with setTimeout
 var currentValue, interval;
 var isListeningForInput  = false;
-var $query = $("#query");
 $query.bind('input', function() {
 	currentValue = $(this).val();
   if (currentValue.length < 2) {

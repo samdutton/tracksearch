@@ -5,7 +5,7 @@ function displayError(message){
 }
 
 function transactionErrorHandler(error) {
-    alert("Transaction error: " + error.message + ", code: " + error.code);
+    console.log("Transaction error: " + error.message + ", code: " + error.code);
 }
 
 function transactionSuccessHandler() {
