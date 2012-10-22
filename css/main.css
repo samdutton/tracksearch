@@ -40,6 +40,10 @@ button[disabled] {
 color: white;
 }
 
+details.videoDetails{
+margin: 0 0 0.3em 0;
+}
+
 div#container {
 background: #000;
 margin: 0 auto 0 auto;
@@ -77,10 +81,31 @@ border-bottom: 1px dotted #999;
 padding: 0 0 0.6em 0;
 }
 
+div.video div.videoRating {
+color: #666;
+font-size: 10pt;
+margin: 0 0 0.4em 0;
+}
+
+div.video div.videoViewCount {
+border-bottom: 1px solid #333;
+color: #666;
+font-size: 10pt;
+margin: 0 0 0.6em 0;
+padding: 0 0 0.6em 0;
+}
+
 div.video div.speakers {
 color: #999;
 font-size: 11pt;
 margin: 0 0 -0.1em 0;
+padding: 0 0 0 16px;
+}
+
+div.video div.videoSummary {
+color: #ccc;
+font-size: 10pt;
+margin: 0 0 0.4em 0;
 }
 
 div.video div.videoTitle {
@@ -169,6 +194,13 @@ color: white;
 cursor: pointer;
 font-weight: bold;
 outline: none;
+}
+
+summary.videoTitle {
+margin: 0 0 0.3em 0;
+padding: 0 0 0 18px;
+text-indent: -18px;
+line-height: 1.2em;
 }
 
 video {

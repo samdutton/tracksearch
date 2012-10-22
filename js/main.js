@@ -112,13 +112,22 @@ function displayResults(transaction, results) {
 			currentVideoId = cue.videoId;
 			var video = videos[currentVideoId];
 			videoDiv = $("<div class='video' />");
-			videoDiv.append("<div class='videoTitle' + title='" + video.summary.replace(/'/g, "&#39;") +
-				"\n\nRating: " + video.rating +
-				"\nView count: " + video.viewCount +
-				"'>" + video.title + "</div>");
+
+			var detailsDiv = $("<details class='videoDetails' />");
+			detailsDiv.append("<summary class='videoTitle'>" + video.title + "</summary>");
+			if (!!video.summary){
+				detailsDiv.append("<div class='videoSummary'>" + video.summary + "</div>");
+			}
+			detailsDiv.append("<div class='videoRating'><strong>Rating: </strong>" +
+				video.rating + "</div>");
+			detailsDiv.append("<div class='videoViewCount'><strong>View count: </strong>" +
+				video.viewCount + "</div>");
+			videoDiv.append(detailsDiv);
+
 			if (video.speakers.length !== 0){
 				videoDiv.append("<div class='speakers'>" + video.speakers.join(", ") + "</div>");
 			}
+
 			cuesDiv = $("<div class='cues' title='Click to play video at this point' />");
 			videoDiv.append(cuesDiv);
 			resultsDiv.append(videoDiv);
