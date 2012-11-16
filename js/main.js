@@ -1,6 +1,3 @@
-document.body.do
-
-
 var tracksPath = "tracks/";
 var trackSuffix = ".vtt";
 var resultsDiv = $("#results");
