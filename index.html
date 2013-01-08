@@ -15,14 +15,16 @@
 
 <div id="container">
 
-<h1>Google I/O Chrome session search</h1>
+<h1>Google Chrome video search</h1>
 
 <iframe id="youTubePlayer" class="youtube-player" type="text/html" width="640" height="385" frameborder="0"></iframe>
 
 <div id="info">
 	<input id="query" type="text" autofocus="true"  />
-  <div id="queryExplanation">Enter text to search for in transcripts, then click on a result to view video.</div>
+  <div id="queryExplanation">Enter text to search transcripts, then click on a result to view video.</div>
 </div> <!-- info -->
+
+<div id="numResults"></div>
 
 <!-- begin results container, content generated dynamically -->
 <div id="results"></div>
@@ -30,9 +32,9 @@
 
 <details>
   <summary>Huh?</summary>
-  <p>Enter text to search Google I/O Chrome session transcripts.</p>
+  <p>Enter text to search GDL, Google I/O, and other Chrome video transcripts.</p>
   <p style="border-bottom: 1px solid #444; padding: 0 0 1em 0;">Click on a result to view video.</p>
-  <p>A timed transcript file in VTT format for each Google I/O session is stored in the <em>tracks</em> folder. VTT files look like this (each item is called a cue): </p>
+  <p>A timed transcript file in VTT format for each video is stored in the <em>tracks</em> folder. VTT files look like this (each item is called a cue): </p>
   <pre>
 WEBVTT
 

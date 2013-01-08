@@ -3,15 +3,16 @@ var trackSuffix = ".vtt";
 var resultsDiv = $("#results");
 var query;
 var $query = $("#query");
+var $numResults = $("#numResults");
 
 function insertCue(tx, videoId, cue){
   tx.executeSql('INSERT INTO cues (videoId, startTime, text) VALUES (?, ?, ?)',
     [videoId, cue.startTime, cue.text]);
 }
 
+var numTracks = 0;
 // insert cues for a TextTrack
 function insertCues(videoId, cues) {
-//	console.log(videoId, cues.length);
   db.transaction(function(tx){
 	  for (var i = 0; i != cues.length; ++i) {
 	  	var cue = cues[i];
@@ -19,11 +20,18 @@ function insertCues(videoId, cues) {
 				insertCue(tx, videoId, cues[i]);
 			}
 	  }
-  }, transactionErrorHandler, null);
+  }, transactionErrorHandler,
+  function(){
+  	// window.numTracks += 1;
+  	// if (window.numTracks < 165){
+  	// 	$query[0].disabled = false;
+  	// }
+  });
 }
 
 // http://storage.googleapis.com/io2012/headshots/mkwst.jpg
 
+// update video data from YouTube
 function updateVideoData(videoId){
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", "http://gdata.youtube.com/feeds/api/videos/" + videoId + "?alt=json");
@@ -74,10 +82,11 @@ db.transaction(function (tx) {
 		[], null, queryErrorHandler);
 }, transactionErrorHandler, buildTracksAndVideoData);
 
-function showCount() {
-    var statement = "SELECT COUNT(*) FROM cues";
-    doReadQuery(statement, showResults);
-}
+// utility function
+// function showCount() {
+//     var statement = "SELECT COUNT(*) FROM cues";
+//     doReadQuery(statement, showResults);
+// }
 
 var youTubePlayer = document.querySelector(".youtube-player");
 // toggle display of cue or query results
@@ -97,12 +106,23 @@ function addClickHandler(cueDiv, cue) {
 
 function displayResults(transaction, results) {
 	resultsDiv.empty();
-	if ($query.val() === "") { // !!!hack: to cope with inputting long query then quickly deleting
-		return;
-	}
+  $("#numResults").empty();
+	if ($query.val().length < 2) {
+    return false;
+  }
+
+	var numResults = results.rows.length;
 	var currentVideoId, videoDiv, cuesDiv;
 	var i;
-  for (i = 0; i !== results.rows.length; ++i) {
+	// hack: to enable matching (for example) two letter combinations
+	// but avoiding matches for common combinations
+	if (numResults > 5000){
+		$numResults.html(numResults + " results (too many to display)");
+		return;
+	} else {
+		$numResults.html(numResults + " result(s)");
+	}
+  for (i = 0; i !== numResults; ++i) {
     var cue = results.rows.item(i);
 		// for each video (i.e. new currentVideoId)
 		// create divs and add the video title,
@@ -113,7 +133,7 @@ function displayResults(transaction, results) {
 			videoDiv = $("<div class='video' />");
 
 			var detailsDiv = $("<details class='videoDetails' />");
-			detailsDiv.append("<summary class='videoTitle'>" + video.title + "</summary>");
+			detailsDiv.append("<summary class='videoTitle' title='Click to view video information'>" + video.title + "</summary>");
 			detailsDiv.append("<img class='videoThumbnail' src='http://img.youtube.com/vi/" +
 				currentVideoId + "/hqdefault.jpg' title='Default thumbnail image' />");
 			if (!!video.summary){
@@ -125,7 +145,7 @@ function displayResults(transaction, results) {
 				video.viewCount + "</div>");
 			videoDiv.append(detailsDiv);
 
-			if (video.speakers.length !== 0){
+			if (video.speakers && video.speakers.length !== 0){
 				videoDiv.append("<div class='speakers'>" + video.speakers.join(", ") + "</div>");
 			}
 
@@ -133,44 +153,34 @@ function displayResults(transaction, results) {
 			videoDiv.append(cuesDiv);
 			resultsDiv.append(videoDiv);
 		}
+
+		var cueStartTimeHTML = "<span class='cueStartTime'>" + toMinSec(cue.startTime) + ": </span>";
+		var cueTextHTML = cue.text.replace(new RegExp("(" + query + ")", "gi"), "<em>$1</em>"); // empasise query
+		cueTextHTML = "<span class='cueText'>" + cueTextHTML + "</span>";
 		// add cue to div.cues
-		var cueDiv = $("<div class='cue'><span class='cueStartTime'>" +
-				toMinSec(cue.startTime) + ": </span><span class='cueText'>" +
-				cue.text.replace(new RegExp("(" +
-				query + ")", "gi"),
-			"<em>$1</em>") + "</span></div>"); // empasise query
+		var cueDiv =
+			$("<div class='cue'>" +
+			cueStartTimeHTML +
+			cueTextHTML +
+			"</div>");
 		addClickHandler(cueDiv, cue);
 		cuesDiv.append(cueDiv);
   }
 }
 
-// most of this code is to wait a bit while query text is entered
-// would be better done with setTimeout
-var currentValue, interval;
-var isListeningForInput  = false;
 $query.bind('input', function() {
-	currentValue = $(this).val();
-  if (currentValue.length < 2) {
-		resultsDiv.empty();
+	resultsDiv.empty();
+	query = $(this).val();
+  if (query.length < 2) {
     return false;
   }
- 	if (!isListeningForInput){
- 		isListeningForInput = true;
-		interval = setInterval(function(){
-			console.log();
-			if ($query.val() === currentValue){
-		 		clearInterval(interval);
-		 		isListeningForInput = false;
-				query = $query.val();
-			  // could cache results and sanitise input
-			  var statement = 'SELECT videoId, startTime, text ' +
-			  	'FROM cues WHERE text like "%' + query + '%"';
-			  doReadQuery(statement, displayResults);
-			} else {
-				currentValue = $query.val();
-			}
-		}, 300);
+	if(typeof(window.inputTimeout) != "undefined"){
+		window.clearTimeout(inputTimeout);
 	}
+	window.inputTimeout = window.setTimeout(function() {
+	  var statement = 'SELECT videoId, startTime, text FROM cues WHERE text like "%' + query + '%"';
+	  doReadQuery(statement, displayResults);
+	}, 300); // 300ms delay between getting keypress
 });
 
 function elapsedTimer(message) {

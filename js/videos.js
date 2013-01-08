@@ -431,7 +431,7 @@ var videos = {
             "Paul Kinlan"
         ],
         "title": "GDL Presents Push the Limits: Chrome Web Lab, Lab Tag Explorer"
-    },
+    },/*
     "PPXeWjWp-8Y": {
         "summary": "Ask and vote for questions at: http://goo.gl/hLfF8. Addy Osmani and the (real) Paul Irish return for the second live episode of the Breakpoint - a new show focusing on developer tooling and workflow. This week they'll be showing us brand new SASS, feature inspection and console features in the Chrome Developer Tools. If you want your to stay on the bleeding edge of tooling, you won't want to miss it.",
         "viewCount": "4618",
@@ -451,7 +451,7 @@ var videos = {
             "Renato Mangini"
         ],
         "title": "Chrome Apps Office Hours: NodeJS in Chrome packaged apps"
-    },
+    },*/
     "LQms5F3ZlcU": {
         "summary": "Join host Paul Kinlan and the creators of Chrome Web Lab in the studio, as they dive into the technology and design behind Sketchbots. Discover the magic and learn about the science behind this experiment: http://www.chromeweblab.com/en-GB/sketchbots#tech.",
         "viewCount": "847",
@@ -501,6 +501,10 @@ var videos = {
         "summary": "Join the Chrome Team as we talk about the new Text to Speech API in Chrome Apps",
         "viewCount": "1405",
         "rating": 4.894737,
+        "speakers": [
+            "Paul Kinlan",
+            "Renato Mangini"
+        ],
         "title": "Chrome Apps Office Hours: Text to Speech API"
     },
     "FvYxf8b3_BQ": {
@@ -555,6 +559,10 @@ var videos = {
         "summary": "Ask and vote for questions at http://goo.gl/oJKcp. Writing a web server in a web browser is a little meta, but it's one of the many new scenarios unlocked by the new APIs available in Chrome Apps!. Join Paul Kinlan and Pete LePage as they explore the networking APIs available to Chrome Apps. They'll show you how you you can write your own web server, and connect to other devices via the network. While the web server in a browser may not be a common scenario, accessing the TCP and UDP stack is extremely powerful and will allow your apps to connect to other hardware or services like never before.",
         "viewCount": "1454",
         "rating": 4.6363635,
+        "speakers": [
+            "Paul Kinlan",
+            "Pete LePage"
+        ],
         "title": "Chrome Apps Office Hours: Networking APIs"
     },
     "ktwJ-EDiZoU": {
@@ -616,6 +624,10 @@ var videos = {
         "summary": "Ask and vote for questions: http://goo.gl/t3SFT. Join us next week as we show you how we used a Chrome App to control an AR Parrot Drone! This is just one of the many cool things that you can do with Chrome Apps. Using the networking APIs, we were able to pilot the AR Parrot Drone, and get data back from its on-board sensors. We'll take the app apart, show you how were were able to get everything to work, and maybe even take it for a live spin on air!",
         "viewCount": "2321",
         "rating": 4.8490567,
+        "speakers": [
+            "Paul Kinlan",
+            "Paul Lewis"
+        ],
         "title": "Chrome Apps Office Hours: Controlling an AR Parrot Drone"
     },
     "_O3-20FUJbg": {
@@ -955,7 +967,7 @@ var videos = {
         "viewCount": "10518",
         "rating": 4.7894735,
         "title": "Integrating with the Licensing API"
-    },
+    },/*
     "q_O9_C2ZjoA": {
         "summary": "Paul Irish, from the Chrome Developer Relations team, walks through smart techniques to improve the performance of your app. He describes CSS reflows and how to avoid them, hardware accelerated CSS, animation optimization, web workers, benchmarking and build scripts.",
         "viewCount": "52057",
@@ -964,7 +976,7 @@ var videos = {
             "Paul Irish"
         ],
         "title": "HTML5, CSS3, and DOM Performance"
-    },
+    },*/
     "Fja-TCLWpUc": {
         "summary": "In this video, developer advocate Arne Roomann-Kurrik presents additional information on why Google started to work on the concept of web apps for Chrome.",
         "viewCount": "51904",
@@ -1199,13 +1211,13 @@ var videos = {
             "Dimitri Glazkov"
         ],
         "title": "WebKit for Chromium Developers"
-    },
+    },/*
     "Sn_3rJaexKc": {
         "summary": "Learn about one of Google Web Toolkit 2.0's newest tools, Speed Tracer, in this video tutorial. This video provides an overview of Speed Tracer, a Chrome extension which enables developers to profile the internals of the browser, preventing bottlenecks by enabling diagnosis of hidden problems. Andrew Bowers will demonstrate how Speed Tracer is incorporated into the development cycle by walking through a Speed Tracer example.",
         "viewCount": "116995",
         "rating": 4.9259257,
         "title": "Speed Tracer Tutorial"
-    },
+    },*/
     "IiN9fxwjcL0": {
         "summary": "-- Contents --. 0:00 - Introduction. 2:12 - WebKit Glue layer. 5:03 - The Render process. 5:38 - Renderer Host. 6:40 - Tab Contents layer. 7:00 - Browser Window. 8:00 - Check Deps (dependencies). 9:14 - Q & A. -- End --. Chromium's multi-process architecture and tight integration with WebKit necessitate a heavily layered approach. In this talk, Brett Wilson introduces each of the layers and explains how they fit together. This video is a great complement to this page: http://dev.chromium.org/developers/design-documents/displaying-a-web-page-in-chrome",
         "viewCount": "4888",

@@ -56,8 +56,13 @@ margin: 0 0 20px 0;
 }
 
 div#queryExplanation{
-  color: #ddd;
-  margin: 0 10px 0 0;
+color: #ddd;
+margin: 0 10px 0 0;
+}
+
+div#numResults {
+color: darkRed;
+margin: 0 0 1em 0;
 }
 
 div#results {
@@ -76,8 +81,8 @@ text-indent: -40px;
 }
 
 div.cues {
-  margin: 1em 0 0 0;
-  padding: 0 0 0 1em;
+margin: 1em 0 0 0;
+padding: 0 0 0 1em;
 }
 
 div.video {
@@ -195,6 +200,10 @@ color: #aaa;
 }
 
 span.cueText {
+color: #ccc;
+}
+
+span.cueText:hover {
 color: white;
 }
 
@@ -223,17 +232,3 @@ line-height: 1.2em;
 video {
 background: #222;
 }
-
-@media screen and (min-width: 1000px) {
-  video {
-    width: 720px;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  video {
-    width: 100%;
-  }
-}
-
-
