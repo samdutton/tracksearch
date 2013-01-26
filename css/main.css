@@ -24,6 +24,7 @@ line-height: 2em;
 body {
 background: #666;
 font-family: Arial, sans-serif;
+overflow-y: scroll;
 padding: 20px;
 }
 
